@@ -39,6 +39,10 @@ func main() {
 
 	last_guid, err := loadLastGUID(*guid_file)
 
+	if err != nil {
+		log.Fatal("Failed to get last GUID")
+	}
+
 	bot, err := LoadRedditBot(*agent, sub)
 
 	if err != nil {
