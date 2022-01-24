@@ -1,6 +1,6 @@
 # bggdeals
 
-Simple bot to fetch deals from BGG on Reddit.
+Simple bot to share deals from BGG on Reddit.
 
 ## Usage
 
