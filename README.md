@@ -7,6 +7,6 @@ Simple bot to share deals from BGG on Reddit.
 ```sh
 $ ./bggdeals -agent [agent file] \
         -guid_file [last_guid file] \
-        -filter [filter threads out] \
+        -filter [matching string] \
         [subreddit]
 ```

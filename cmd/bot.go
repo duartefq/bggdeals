@@ -1,19 +1,11 @@
-package main
+package cmd
 
 import (
 	"log"
 	"flag"
 )
 
-type handler interface {
-    PostThread(item *Item) error
-}
-
-func post(h handler, item *Item) error {
-	return h.PostThread(item)
-}
-
-func main() {
+func Run() {
 	log.SetPrefix("bgg-deals: ")
 	log.SetFlags(0)
 

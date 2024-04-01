@@ -1,4 +1,4 @@
-module bggdeals
+module github.com/duartefq/bggdeals
 
 go 1.15
 

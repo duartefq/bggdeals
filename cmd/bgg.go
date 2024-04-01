@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"github.com/mmcdole/gofeed"
@@ -6,6 +6,18 @@ import (
 	"strings"
 	"log"
 )
+
+type Item struct {
+	Title string
+	Link string
+}
+
+type BGGFeed struct {
+	url string
+	filter string
+	last_guid *LastGUID
+	Handler handler
+}
 
 type LastGUID struct {
 	Title string
@@ -24,22 +36,14 @@ func loadLastGUID(title string) (*LastGUID, error) {
 	return &LastGUID{Title: title, GUID: string(body)}, nil
 }
 
-type Item struct {
-	Title string
-	Link string
-}
-
-type BGGFeed struct {
-	url string
-	filter string
-	last_guid *LastGUID
-	Handler handler
-}
-
 func (b *BGGFeed) GetItems() []*gofeed.Item {
 	fp := gofeed.NewParser()
 	feed, _ := fp.ParseURL(b.url)
 	return feed.Items
+}
+
+func post(h handler, item *Item) error {
+	return h.PostThread(item)
 }
 
 func (b *BGGFeed) Crawl() {

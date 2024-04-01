@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"strings"
@@ -10,6 +10,10 @@ import (
 type redditDealsBot struct {
 	bot reddit.Bot
 	subreddit string
+}
+
+type handler interface {
+    PostThread(item *Item) error
 }
 
 func (r *redditDealsBot) PostThread(item *Item) error {
